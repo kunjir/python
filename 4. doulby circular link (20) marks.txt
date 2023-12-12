@@ -1,0 +1,47 @@
+4. Write a Python program for dynamic implementation of Doubly Circular Linked List to perform following operations:
+a. Create
+b. Display
+ans:
+       class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class CircularDoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def create(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            new_node.next = self.head
+            new_node.prev = self.head
+        else:
+            last_node = self.head.prev
+            new_node.prev = last_node
+            last_node.next = new_node
+            new_node.next = self.head
+            self.head.prev = new_node
+
+    def display(self):
+        if self.head is None:
+            print("The list is empty.")
+            return
+        temp = self.head
+        while True:
+            print(temp.data, end=" ")
+            temp = temp.next
+            if temp == self.head:
+                break
+        print()
+
+
+# Create and display the doubly circular linked list
+dll = CircularDoublyLinkedList()
+dll.create(1)
+dll.create(2)
+dll.create(3)
+dll.create(4)
+dll.display()
