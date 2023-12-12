@@ -1,0 +1,85 @@
+5. Write a Python program for static implementation of linear queue to perform following operations:
+a. init
+b. enqueue
+c. dequeue
+d. isEmpty
+e. isFull
+ans:
+class Queue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+
+    def enqueue(self, value):
+        if self.isFull():
+            print("Queue is full.")
+        else:
+            if self.front == -1:
+                self.front = 0
+            self.rear += 1
+            self.queue[self.rear] = value
+            print(f"Enqueued {value} to the queue.")
+
+    def dequeue(self):
+        if self.isEmpty():
+            print("Queue is empty.")
+        else:
+            value = self.queue[self.front]
+            self.queue[self.front] = None
+            self.front += 1
+            if self.front > self.rear:
+                self.front = -1
+                self.rear = -1
+            print(f"Dequeued {value} from the queue.")
+
+    def isEmpty(self):
+ if self.front == -1:
+            return True
+        else:
+            return False
+
+    def isFull(self):
+        if self.rear == self.size - 1:
+            return True
+        else:
+            return False
+
+size = int(input("Enter the size of the queue: "))
+queue = Queue(size)
+
+while True:
+    print("\n********** MENU **********")
+    print("1. Enqueue")
+    print("2. Dequeue")
+    print("3. Check if queue is empty")
+    print("4. Check if queue is full")
+    print("5. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        value = input("Enter the value to enqueue: ")
+        queue.enqueue(value)
+
+    elif choice == 2:
+queue.dequeue()
+
+    elif choice == 3:
+        if queue.isEmpty():
+            print("Queue is empty.")
+        else:
+            print("Queue is not empty.")
+
+    elif choice == 4:
+        if queue.isFull():
+            print("Queue is full.")
+        else:
+            print("Queue is not full.")
+
+    elif choice == 5:
+        break
+
+    else:
+        print("Invalid choice. Please enter a valid option from the menu.")
