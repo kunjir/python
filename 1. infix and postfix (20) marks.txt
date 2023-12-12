@@ -49,3 +49,4 @@ return postfix
 # Test the function
 expression = input("Enter an infix expression: ")
 postfix = infix_to_postfix(expression)
+print("postfix expression:",postfix)
