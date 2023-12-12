@@ -1,0 +1,24 @@
+2.Write a Python program to evaluate postfix expression using stack.
+Ans:
+
+k[562+*124/-]
+    def evaluate_postfix(expression):
+    stack = []
+    operators = {'+': lambda x, y: x + y,'-': lambda x, y: x - y,'*': lambda x, y: x * y,'/': lambda x, y: x / y}
+    
+    for char in expression:
+        if char.isdigit():
+            stack.append(int(char))
+        elif char in operators:
+            second_operand = stack.pop()
+            first_operand = stack.pop()
+            operation = operators[char]
+            result = operation(first_operand, second_operand)
+            stack.append(result)
+    
+    return stack.pop()
+
+# Example usage
+expression = "82+5*"
+result = evaluate_postfix(expression)
+print("Result:", result)
