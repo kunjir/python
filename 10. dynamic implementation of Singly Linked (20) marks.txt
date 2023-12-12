@@ -1,0 +1,54 @@
+10. Write a Python program for dynamic implementation of Singly Linked List to perform following operations:
+a. Create
+b. Display
+c. Sort
+ans:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def create(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+ def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+    def sort(self):
+        if self.head is None:
+            return
+        else:
+            current = self.head
+            while current:
+                next_node = current.next
+                while next_node:
+                    if current.data > next_node.data:
+                        current.data, next_node.data = next_node.data, current.data
+                    next_node = next_node.next
+                current = current.next
+
+# Example Usage
+sll = SinglyLinkedList()
+sll.create(3)
+sll.create(1)
+sll.create(2)
+print("Singly Linked List before sorting:")
+sll.display()
+sll.sort()
+print("Singly Linked List after sorting:")
+sll.display()
