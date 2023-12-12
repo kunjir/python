@@ -1,0 +1,16 @@
+9.Write a program which accepts 6 integer values and prints “DUPLICATES” if any of the values entered are duplicates otherwise it prints “ALL UNIQUE”. Example: Let 5 integers are (32, 10, 45, 90, 45, 6) then output “DUPLICATES” to be printed.
+Ans:
+def check_duplicates(numbers):
+    if len(numbers) != len(set(numbers)):
+        print("DUPLICATES")
+    else:
+        print("ALL UNIQUE")
+
+# Accept 6 integer values
+numbers = []
+for i in range(6):
+    value = int(input("Enter an integer value: "))
+    numbers.append(value)
+
+# Check for duplicates
+check_duplicates(numbers)
