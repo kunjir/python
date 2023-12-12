@@ -1,0 +1,18 @@
+1.Write a Python program to search an element within an array using linear search.
+Ans:
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+# Example usage
+array = [10, 20, 30, 40, 50, 60, 70]
+target_element = 40
+
+result = linear_search(array, target_element)
+
+if result == -1:
+    print(f"The element {target_element} is not found in the array.")
+else:
+    print(f"The element {target_element} is found at index {result}.")
